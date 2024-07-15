@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from productos.views import agregar_producto,eliminar_producto,restar_producto,limpiar_carrito
+from .views import tienda, shopping_cart, registro
 
 
 
@@ -7,16 +9,21 @@ urlpatterns = [
     path('index', views.index, name='index'),
     path('About', views.About, name='About'),
     path('Adopciones', views.Adopciones, name='Adopciones'),
-    path('Productos', views.Productos, name='Productos'),
+    path('tienda', views.tienda, name='tienda'),
     path('ShoppingCart', views.ShoppingCart, name='ShoppingCart'),
     path('crud', views.crud, name='crud'),
-    path('clientesadd', views.clientesadd, name='clientesadd'),
+    path('clientes_add', views.clientes_add, name='clientes_add'),
     path('clientes_del/<str:pk>', views.clientes_del, name='clientes_del'),
     path('clientes_findEdit/<str:pk>', views.clientes_findEdit, name='clientes_findEdit'),
-    path('clientesUpdate', views.clientesUpdate, name='clientesUpdate'),
-    path('agregar_al_carro/<int:producto_id/', views.agregar_al_carro, name='agregar_al_carro'),
-    path('quitar_del_carro/int:item_producto_id>/', views.quitar_del_carro, name='quitar_del_carro' ),
-    path('lista_productos/', views.lista_productos, name='lista_productos'),
+    path('clientes_Update', views.clientes_Update, name='clientes_Update'),
+    path('agregar/<int:producto_id>/', agregar_producto, name="Add"),
+    path('eliminar/<int:producto_id>/', eliminar_producto, name="Del"),
+    path('restar/<int:producto_id>/', restar_producto, name="Sub"),
+    path('limpiar/', limpiar_carrito, name="CLS"),
+    path('', tienda, name='productos'),
+    path('carrito/', shopping_cart, name='shopping_cart'),
+    path('registro/', registro, name="registro"),
+    
 
 
 

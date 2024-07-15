@@ -8,11 +8,11 @@
     <title>Clientes_Add</title>
 </head>
 <body>
-
+-
     
         <div style=" text-align: center;">
             <h2>Formulario CRUD para Alumnos</h2><br>
-            <form action="alumnos Add" method="POST" >
+            <form action="clientes_add" method="POST" >
                 {% csrf_token %}
 
                 <pre>Rut:               <input type="text" name="rut" ></pre> 
@@ -38,8 +38,8 @@
                 {% if mensaje %}
                 {{mensaje}}
                 {% endif %}   
+            </div>
         </div>
-    </div>
          
         
 

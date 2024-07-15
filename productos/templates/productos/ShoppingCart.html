@@ -11,157 +11,221 @@
     
 
     <div class="container text-center" >
-        <div class="row">
-          <div class="col">
-            <nav class="navbar navbar-expand-lg bg-primary-subtle">
-                <div class="container-fluid">
-                  <a class="navbar-brand" href="#">Rincon de los Peludos</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-3 mb-lg-0">
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index">Inicio</a>
-                      </li>
+      <div class="row">
+        <div class="col">
+          <nav class="navbar navbar-expand-lg bg-primary-subtle">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#">Rincon de los Peludos</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-3 mb-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="index">Inicio</a>
+                    </li>
 
-                     <li class="nav-item">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary-subtle" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Unirse al boletin
-                          </button>
-                          
-                          <!-- Modal -->
-                          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Boletin</h1>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                  Unete al boletin de noticias para las ultimas ofertas y noticias
-                                  <div class="mb-3">
+                   <li class="nav-item">
+                      <!-- Button trigger modal -->
+                      <button type="button" class="btn btn-primary-subtle" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          Unirse al boletin
+                        </button>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Boletin</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                Unete al boletin de noticias para las ultimas ofertas y noticias
+                                <div class="mb-3">
+                                  <form id="boletinform">
                                     <label for="exampleFormControlInput1" class="form-label">Ingrese Email</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
-                                  </div>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                  <button type="button" class="btn btn-primary">Confirmar</button>
+                                  <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
                                 </div>
                               </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="sumbit" class="btn btn-primary">Confirmar</button>
+                              </div>
+
+                                  </form>
+                                  
                             </div>
                           </div>
-                      </li>
-
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="Adopciones">Adopciones</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="About">Sobre Nosotros</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="Productos">Productos</a>
-                      </li>
-
-
-                      <li class="nav-item">
-                        <div class="row">
-                            <div class="col">
-                                <a  class="nav-link active" aria-current="page" href="ShoppingCart"> <img class="pull-right" src="{% static 'productos/cart-icon-28356.png' %}" height="25px" width="25px" alt="">
-                                    Carrito</a>
-                                
-                            </div>
                         </div>
-                     </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                      <input class="form-control me-2" type="search" placeholder="Encuentra tu producto" aria-label="Search">
-                      <button class="btn btn-outline-Primary" type="submit">Buscar</button>
-                    </form>
-                  </div>
-                </div>
-              </nav>
-          </div>
-        </div>
-      </div>
-      <ul>
-        {%for producto in item_producto %}
-        <li>
-            {{item.producto.nombre}} - {{item_cantidad}} x {{item.producto.nombre}}
-            <form method="POST" action = "{%url 'quitar_del_carro' item.id %}">
-              {%csrf_token%}
-              <button type="sumbit" > Quitar </button>
-            </form>
-         </li>
-        {%endfor%}
-      </ul>
-      <p>Total: {{total}} </p>
-      <a href="{% url 'lista_productos'%}"> continuar compra
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="Adopciones">Adopciones</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="About">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="tienda">Productos</a>
+                    </li>
 
 
-
-      <div class="container text-center">
-        <div class="row">
-          <div class="col">
-            <h1 class="text-start">  Carrito de compras</h1>
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Producto</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Opcion</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Collar antipulgas perro</td>
-                    <td>$5.000</td>
-                    <td><button type="button" class="btn btn-danger">Borrar</button></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Churu Pollo</td>
-                    <td>$1.500</td>
-                    <td><button type="button" class="btn btn-danger">Borrar</button></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Delicias Felix</td>
-                    <td>$800</td>
-                    <td><button type="button" class="btn btn-danger">Borrar</button></td>
-                  </tr>
-                </tbody>
-              </table>
-          </div>
-        </div>
-      </div>
-
-      <div class="container text-center">
-        <div class="row">
-          <div class="col-7">
-          </div>
-          <div class="col-5">
-                <h2>Resumen</h2>
-                <div class="container text-center">
-                    <div class="row">
-                      <div class="col">
-                        <p>Total a pagar: $7300</p>
-                        <button type="button" class="btn btn-success">Pagar</button>
-
+                    <li class="nav-item">
+                      <div class="row">
+                          <div class="col">
+                              <a  class="nav-link active" aria-current="page" href="ShoppingCart"> <img class="pull-right" src="{% static 'productos/cart-icon-28356.png' %}" height="25px" width="25px" alt="">
+                                  Carrito</a>
+                              
+                          </div>
                       </div>
-                    </div>
-                  </div>
-          </div>
+                   </li>
+                   <li class="nav-item">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary-subtle" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                        Crear cuenta
+                      </button>
+                      
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Creacion de cuenta</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              Cree su cuenta para descuentos especiales
+                              <div class="mb-3">
+                                <form id="registroForm">
+                                  <label for="rut">Rut:</label>
+                                  <input type="text" id="rut" name="rut"><br>
+                          
+                                  <label for="nombre">Nombre:</label>
+                                  <input type="text" id="nombre" name="nombre"><br>
+                          
+                                  <label for="apellidoPaterno">Apellido Paterno:</label>
+                                  <input type="text" id="apellidoPaterno" name="apellidoPaterno"><br>
+                          
+                                  <label for="apellidoMaterno">Apellido Materno:</label>
+                                  <input type="text" id="apellidoMaterno" name="apellidoMaterno"><br>
+                          
+                                  <label for="edad">Edad:</label>
+                                  <input type="number" id="edad" name="edad"><br>
+                          
+                                  <label for="genero">Género:</label>
+                                  <select id="genero" name="genero">
+                                      <option value="">Seleccione</option>
+                                      <option value="masculino">Masculino</option>
+                                      <option value="femenino">Femenino</option>
+                                      <option value="otro">Otro</option>
+                                  </select><br>
+                          
+                                  <label for="celular">Celular:</label>
+                                  <input type="text" id="celular" name="celular"><br>
+                          
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="sumbit" class="btn btn-primary">Registrar</button>
+                                  </div>
+                              </form>
+                              </div>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                  </li>
+
+                  </ul>
+                  {% if user.is_authenticated %}
+                  <li>
+                    <a href="{% url 'logout' %}"> Cerrar Sesion</a>
+                  </li>
+                  <li>
+                    <a href="#">@{{user.username}}</a>
+                  </li>
+                  {% else %}
+                  <li>
+                    <a href="{% url 'login' %}">Iniciar Sesion</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'registro' %}">Registrarse</a>
+                  </li>
+                  {% endif %}
+                  
+                  </form>
+                </div>
+              </div>
+            </nav>
         </div>
       </div>
+    </div>
+
+      <div class="container text-center">
+        <!-- Mensaje de éxito si se ha realizado una acción -->
+        {% if accion %}
+            {% if accion == 'eliminado' %}
+            <div class="alert alert-success" role="alert">
+                Producto eliminado del carrito exitosamente.
+            </div>
+            {% elif accion == 'restado' %}
+            <div class="alert alert-success" role="alert">
+                Cantidad del producto restada exitosamente.
+            </div>
+            {% elif accion == 'limpiado' %}
+            <div class="alert alert-success" role="alert">
+                Carrito limpiado exitosamente.
+            </div>
+            {% endif %}
+        {% endif %}
+    
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Acumulado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if request.session.carrito.items %}
+                {% for key, value in request.session.carrito.items %}
+                <tr>
+                    <td>{{ value.nombre }}</td>
+                    <td>{{ value.precio }}</td>
+                    <td>{{ value.acumulado }}</td>
+                    <td>
+                        <a href="{% url 'Add' value.producto_id %}" class="badge btn btn-dark">+</a>
+                        <a href="{% url 'Sub' value.producto_id %}" class="badge btn btn-dark">-</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="4">
+                        <div class="alert alert-danger text-center">Sin productos</div>
+                    </td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <th scope="row" colspan="2">Total:</th>
+                    <td colspan="2" >$ {{ total_carrito }}</td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <div class="row text-center">
+            <div class="col-md-6">
+                <a href="{% url 'CLS' %}" class="btn btn-danger">Limpiar</a>
+            </div>
+            <div class="col-md-6">
+                <a href="#" class="btn btn-success">Guardar</a>
+            </div>
+        </div>
+    </div>
+    
 
       
-
-
 
 
 

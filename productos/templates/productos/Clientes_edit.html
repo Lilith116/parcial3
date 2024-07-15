@@ -5,15 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clientes_Add</title>
+    <title>Clientes_edit</title>
 </head>
 <body>
 
     <div style=" text-align: center;">
-        {%if cliente %}
+        {% if cliente %}
             <h2>Formulario actualizar cliente</h2><br>
 
-            <form action="{%url 'clientesUpdate'%}" method="POST" >
+            <form action="{%url 'clientes_Update'%}" method="POST" >
                 {% csrf_token %}
 
                 <pre>Rut:               <input type="text" name="rut"  value="{{clientes.rut}}"></pre> 
@@ -40,12 +40,15 @@
 
             </form> <br><br>
             {% endif %}
+            </div>
+            <a href="{% url 'crud' %}"> volver </a>
+            <br>
             <div id="idMensajes">
                 {% if mensaje %}
                 {{mensaje}}
                 {% endif %}   
-    </div>
-    <a href={%url 'crud' %}> volver </a>
+         </div>
+    
 </div>
      
     

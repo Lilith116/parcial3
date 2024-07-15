@@ -26,22 +26,16 @@ class Genero(models.Model):
         return str(self.genero)
     
 class Producto(models.Model):
-    nombre = models.CharField(max_length=255)
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
-    descripcion = models.TextField()
+    nombre = models.CharField(max_length=64)       
+    descripcion = models.CharField(max_length=100)
+    precio = models.IntegerField()
+    image = models.ImageField(default='fallback.png', blank=True)
+    
+    
+    
     
     def __str__(self):
-        return self.nombre
+        return f'{self.nombre} -> {self.precio}'
 
-class ProductoCarro(models.Model):
-    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    cantidad = models.PositiveIntegerField(default=1)
-    
-    def __str__(self):
-        return f"{self.cantidad} of {self.producto.nombre}"
-    
-    def precio_total(self):
-        return self.cantidad * self.producto.precio
-        
 
 
